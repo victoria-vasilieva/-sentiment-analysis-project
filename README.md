@@ -1,4 +1,5 @@
 # Sentiment Analysis Pipeline
+A simple end-to-end sentiment analysis project that trains a text classifier using scikit-learn and predicts the sentiment of new input sentences.
 
 ## Setup
 
