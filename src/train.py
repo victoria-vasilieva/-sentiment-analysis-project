@@ -10,7 +10,22 @@ from sklearn.pipeline import Pipeline, make_pipeline
 
 def load_and_validate_data(data_path: str) -> pd.DataFrame:
     """
-    Loads data from a CSV and ensures it has the required columns.
+    Load the dataset from a CSV file and validate its structure.
+
+    Parameters
+    ----------
+    data_path : str
+        Path to the CSV file containing sentiment data.
+
+    Returns
+    -------
+    pd.DataFrame
+        A DataFrame containing the dataset.
+
+    Raises
+    ------
+    ValueError
+        If the CSV file does not contain the required 'text' and 'label' columns.
     """
     df = pd.read_csv(data_path)
     if not {"text", "label"}.issubset(df.columns):
