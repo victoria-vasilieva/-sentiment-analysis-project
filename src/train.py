@@ -79,3 +79,5 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     df = load_and_validate_data("data/sentiments.csv")
     print(df.head())
+
+# sahand adding comments
