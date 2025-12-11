@@ -46,11 +46,41 @@ def train_model(X_train: pd.Series, y_train: pd.Series) -> Pipeline:
     clf_pipeline.fit(X_train, y_train)
     return clf_pipeline
 
+def print_dataset_summary(df: pd.DataFrame) -> None:
+    """
+    Print a simple summary of the dataset, including:
+    - Number of rows
+    - Number of positive and negative samples
+    - Example texts
+    
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataset containing 'text' and 'label' columns.
+    """
+    print("=== Dataset Summary ===")
+    print(f"Total rows: {len(df)}")
+    
+    # Class distribution
+    label_counts = df["label"].value_counts().sort_index()
+    print("\nLabel distribution:")
+    for label, count in label_counts.items():
+        label_name = "Positive (1)" if label == 1 else "Negative (0)"
+        print(f"  {label_name}: {count}")
+
+    # Show first few examples
+    print("\nSample texts:")
+    for idx, row in df.head(3).iterrows():
+        print(f"  - {row['text']} (label={row['label']})")
+
+    print("=======================\n")
+
 def main(data_path: str, model_path: str) -> None:
     """
     Main workflow to load, train, evaluate, and save the model.
     """
     df = load_and_validate_data(data_path)
+    print_dataset_summary(df)
     X_train, X_test, y_train, y_test = split_data(df)
     clf = train_model(X_train, y_train)
 
