@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main ]        # change to [ master ] if your default branch is master
+    branches: [ main ]   
     paths:
       - "src/**"
       - "data/**"
@@ -29,7 +29,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
