@@ -38,4 +38,5 @@ jobs:
 
       - name: Run prediction script
         run: |
-          python src/predict.py
+          python src/predict.py --model models/model.joblib "I love this movie" "This is terrible"
+
